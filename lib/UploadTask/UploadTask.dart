@@ -274,7 +274,8 @@ else if(selectedCategory=='Other'){
         "title": title,
         "description": description,
         "budget": budget,
-"category_id":category_id
+"category_id":category_id,
+
 
       });
       var response = await http.post(url, headers: header, body: body);

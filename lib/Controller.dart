@@ -17,8 +17,8 @@ class Controller extends GetxController{
 
 
   //endpoints
-  var baseUrl="https://assignease-backend.onrender.com/";
-
+  var baseUrl="https://assignease-backend-production.up.railway.app/";
+  var mlUrl="https://217c-14-139-184-222.ngrok-free.app/predict";
 
 //manage loading states
 

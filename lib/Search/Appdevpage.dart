@@ -50,7 +50,7 @@ class _AppDevelopmentPageState extends State<AppDevelopmentPage> {
       setState(() {
         data = responseData;
       });
-
+print("Adamsy nok");
       print(responseData);
     } else {
       print(response.body);
@@ -185,7 +185,7 @@ class _AppDevelopmentPageState extends State<AppDevelopmentPage> {
                                         id: data[index]["_id"],
                                     bids: data[index]["bids"].length,
                                         budget: data[index]["budget"],
-
+author: data[index]["user_id"]["name"],
                                       ),
                                     ),
                                     SizedBox(

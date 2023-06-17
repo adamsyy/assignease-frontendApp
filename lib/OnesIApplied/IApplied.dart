@@ -1,4 +1,5 @@
-import 'package:asignease/Controller.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -7,6 +8,7 @@ import 'package:walletconnect_dart/walletconnect_dart.dart';
 var wcLink;
 var connected = false;
 var address;
+
 class IApplied extends StatefulWidget {
   const IApplied({Key? key}) : super(key: key);
 
@@ -23,18 +25,144 @@ class _IAppliedState extends State<IApplied> {
 
   double balanceRemaining = 250.0;
 
-  void depositMoney(double amount) {
-    setState(() {
-      balanceRemaining += amount;
+  void depositMoney(double amount) async {
+    if (connected) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String connectedAccount = prefs.getString("connectedAccount") ?? "";
+
+      final connector = WalletConnect(
+        bridge: 'https://bridge.walletconnect.org',
+        clientMeta: PeerMeta(
+          name: 'WalletConnect',
+          description: 'WalletConnect Developer App',
+          url: 'https://walletconnect.org',
+          icons: [
+            'https://gblobscdn.gitbook.com/spaces%2F-LJJeCjcLrr53DcT1Ml7%2Favatar.png?alt=media'
+          ],
+        ),
+      );
+
+      connector.on('connect', (session) {
+        if (session is SessionStatus && session.accounts.isNotEmpty) {
+          final connectedAccount = session.accounts[0];
+          print("Connected account address: $connectedAccount");
+          prefs.setString("connectedAccount", connectedAccount);
+        }
+      });
+
+      if (!connector.connected) {
+        final session = await connector.createSession(
+          chainId: 4160,
+          onDisplayUri: (uri) async {
+            wcLink = uri;
+            print(uri);
+            await launch(wcLink);
+            print("Launched");
+          },
+        );
+      }
+
+      final rpcUrl = connector.session?.rpcUrl;
+      if (rpcUrl != null) {
+        final request = {
+          'jsonrpc': '2.0',
+          'method': 'eth_sendTransaction',
+          'params': [
+            {
+              'from': connectedAccount,
+              'to': '0x017d9Fa382BD869C5840bf8E9dd9761754A879ec',
+              'value': '0x${(amount * 1e18).toInt().toRadixString(16)}',
+            }
+          ],
+          'id': 1,
+        };
+
+        final response = await http.post(Uri.parse(rpcUrl), body: jsonEncode(request));
+        final responseData = jsonDecode(response.body);
+        print('Transaction response: $responseData');
+      }
+    }
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    connected = false;
+    checkConnection();
+    connectWallet();
+  }
+
+  void connectWallet() async {
+    final connector = WalletConnect(
+      bridge: 'https://bridge.walletconnect.org',
+      clientMeta: PeerMeta(
+        name: 'WalletConnect',
+        description: 'WalletConnect Developer App',
+        url: 'https://walletconnect.org',
+        icons: [
+          'https://gblobscdn.gitbook.com/spaces%2F-LJJeCjcLrr53DcT1Ml7%2Favatar.png?alt=media'
+        ],
+      ),
+    );
+
+    connector.on('connect', (session) {
+      print("one");
+      print(session);
+
+      if (session is SessionStatus && session.accounts.isNotEmpty) {
+        final connectedAccount = session.accounts[0];
+        print("Connected account address: $connectedAccount");
+        SharedPreferences.getInstance().then((prefs) {
+          prefs.setString("connectedAccount", connectedAccount);
+          setState(() {
+            connected = true;
+            address = connectedAccount;
+          });
+        });
+      }
+    });
+
+    connector.on('session_update', (payload) {
+      print("two");
+      print(payload);
+    });
+
+    connector.on('disconnect', (session) {
+      print("3");
+      print(session);
+    });
+
+    if (!connector.connected) {
+      final session = await connector.createSession(
+        chainId: 4160,
+        onDisplayUri: (uri) async {
+          wcLink = uri;
+          print(uri);
+          await launch(wcLink);
+          print("Launched");
+        },
+      );
+    }
+  }
+
+  void checkConnection() {
+    SharedPreferences.getInstance().then((prefs) {
+      String connectedAccount = prefs.getString("connectedAccount") ?? "";
+
+      if (connectedAccount != "") {
+        setState(() {
+          connected = true;
+          address = connectedAccount;
+        });
+      } else {
+        setState(() {
+          connected = false;
+        });
+      }
     });
   }
-@override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    connected=false;
-    checkConnection();
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +189,6 @@ class _IAppliedState extends State<IApplied> {
                 "https://gingersauce.co/wp-content/uploads/2020/09/image14.png",
                 width: 60,
               ),
-              // Add some spacing between the logo and text
               Text(
                 'Assignease',
                 style: TextStyle(
@@ -145,7 +272,6 @@ class _IAppliedState extends State<IApplied> {
                     height: 200,
                     width: double.infinity,
                     child: ListView.builder(
-
                       itemCount: transactionHistory.length,
                       itemBuilder: (context, index) {
                         return ListTile(
@@ -204,7 +330,6 @@ class _IAppliedState extends State<IApplied> {
                       hintText: "Enter amount to deposit",
                     ),
                     onChanged: (value) {
-                      // Parse the input value and call the depositMoney function
                       double amount = double.tryParse(value) ?? 0.0;
                       depositMoney(amount);
                     },
@@ -212,13 +337,23 @@ class _IAppliedState extends State<IApplied> {
                 ],
               ),
             ),
-         connected==false?Padding(
+            connected == false
+                ? Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  connectWallet();
+                },
+                child: Text("Connect Wallet"),
+              ),
+            )
+                : Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Connect Crypto Wallet",
+                    "Connected Wallet",
                     style: TextStyle(
                       color: Colors.black,
                       fontFamily: 'Sora',
@@ -226,109 +361,30 @@ class _IAppliedState extends State<IApplied> {
                       fontSize: 18,
                     ),
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Color.fromRGBO(36, 107, 253, 1)),
-                    onPressed: () async {
-                      print("Connect button pressed");
-                      final connector = WalletConnect(
-                        bridge: 'https://bridge.walletconnect.org',
-                        clientMeta: PeerMeta(
-                          name: 'WalletConnect',
-                          description: 'WalletConnect Developer App',
-                          url: 'https://walletconnect.org',
-                          icons: [
-                            'https://gblobscdn.gitbook.com/spaces%2F-LJJeCjcLrr53DcT1Ml7%2Favatar.png?alt=media'
-                          ],
-                        ),
-                      );
-
-// Subscribe to events
-                      connector.on('connect', (session) {
-                        print("one");
-                        print(session);
-
-                        if (session is SessionStatus && session.accounts.isNotEmpty) {
-                          final connectedAccount = session.accounts[0];
-                          print("Connected account address: $connectedAccount");
-                          SharedPreferences.getInstance().then((prefs) {
-                            prefs.setString("connectedAccount", connectedAccount);
-                          });
-                        }
-                      });
-                      connector.on('session_update', (payload) =>{print("two"), print(payload)});
-                      connector.on('disconnect', (session) =>{print("3"), print(session)});
-
-// Create a new session
-                      if (!connector.connected) {
-                        final session = await connector.createSession(
-                          chainId: 4160,
-                          onDisplayUri: (uri) async => {
-                            wcLink = uri,
-                            print(uri),
-                          await launch(wcLink),
-                            print("Launched")
-                          },
-                        );
-                      }
-
-
-
-                    },
-                    child: Text(
-                      "Connect",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Sora',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
+                  Text(
+                    address,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Sora',
+                      fontSize: 14,
                     ),
                   ),
-
                 ],
               ),
-            ):Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-           height: 65,
-               decoration: BoxDecoration(
-                 borderRadius: BorderRadius.circular(10),
-                 color:Controller().button_purple_shade,
-               ),
-               child: Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: Center(child: Text("Connected to wallet address: $address",
-                 style: TextStyle(
-                   color: Colors.white,
-                   fontFamily: 'Sora',
-                   fontWeight: FontWeight.bold,
-                   fontSize: 18,
-                 ),
-                 )),
-               )),
             ),
           ],
         ),
       ),
     );
   }
-  void checkConnection() {
-    SharedPreferences.getInstance().then((prefs) {
-      String connectedAccount = prefs.getString("connectedAccount") ?? "";
-//if connectedAccount is not there reurn null
-      if (connectedAccount != "") {
-setState(() {
-  connected=true;
-  address=connectedAccount;
-
-});
-      }else{
-        setState(() {
-          connected=false;
-        });
-      }
-    });
-  }
-
 }
 
+void main() {
+  runApp(MaterialApp(
+    title: 'Assignease',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    home: IApplied(),
+  ));
+}

@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 class MyContainer extends StatefulWidget {
   final String task;
   final String description;
+  final String author;
   var id;
 var bids;
 var budget;
-  MyContainer({required this.task, required this.description, this.id,this.bids,this.budget});
+  MyContainer({required this.task, required this.description, this.id,this.bids,this.budget,required this.author});
 
   @override
   _MyContainerState createState() => _MyContainerState();
@@ -80,7 +81,7 @@ class _MyContainerState extends State<MyContainer> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "By Krishnaprasad MG",
+                      "By ${widget.author}",
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 12,
@@ -104,7 +105,7 @@ class _MyContainerState extends State<MyContainer> {
                                 title: widget.task,
                                 description: widget.description,
                                 image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/172660276/original/ed89b0a03f078ef59937a7a0ef9c79d4cd5b560d.jpg", // Replace with the actual image URL
-                                postedBy: "John Doe", // Replace with the actual posted by user
+                                postedBy: widget.author,// Replace with the actual posted by user
                                 budget:widget.budget.toString(),// Replace with the actual budget
                                 numBidders: widget.bids, // Replace with the actual number of bidders
                               ),

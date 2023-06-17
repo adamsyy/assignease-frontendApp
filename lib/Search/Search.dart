@@ -207,9 +207,14 @@ class _SearchState extends State<Search> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height / 50),
             !checked
-                ? Center(
-                    child: CupertinoActivityIndicator(),
-                  )
+                ? Column(
+                  children: [
+                    SizedBox(height: 150,),
+                    Center(
+                        child: CupertinoActivityIndicator(),
+                      ),
+                  ],
+                )
                 : Container(
                     height: MediaQuery.of(context).size.height / 2.5,
                     width: MediaQuery.of(context).size.width,
@@ -218,6 +223,7 @@ class _SearchState extends State<Search> {
                       itemBuilder: (context, index) {
                         return Center(
                           child: MyContainer(
+                            author: data[index]["user_id"]["name"],
                             task: data[index]['title'],
                             description: data[index]['description'],
                             id: data[index]['_id'],

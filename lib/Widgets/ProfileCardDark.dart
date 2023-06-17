@@ -74,25 +74,23 @@ class Profile_card_dark extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Expanded(
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: Container(
-                  width: 60,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
-                  ),
-                  child: Center(
-                    child: Text(
-                      'View',
-                      style: TextStyle(
-                        color: globals.button_purple_shade.withOpacity(0.83),
-                        fontWeight: FontWeight.w700,
-                        fontSize: 12,
-                        fontFamily: 'Urbanist',
-                      ),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                width: 60,
+                height: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+                child: Center(
+                  child: Text(
+                    'View',
+                    style: TextStyle(
+                      color: globals.button_purple_shade.withOpacity(0.83),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 12,
+                      fontFamily: 'Urbanist',
                     ),
                   ),
                 ),

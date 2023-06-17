@@ -23,12 +23,15 @@ class _SplashScreenState extends State<SplashScreen> {
     String? token = prefs.getString('token');
 
     if (token != null) {
+      //delay of 2 seconds
+      await Future.delayed(Duration(seconds: 2));
       // Token exists, navigate to home screen or desired screen
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => ScreenDecider()),
       );
     } else {
+      await Future.delayed(Duration(seconds: 2));
       // Token does not exist, navigate to login screen or desired screen
       Navigator.pushReplacement(
         context,

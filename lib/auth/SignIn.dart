@@ -9,6 +9,8 @@ import 'package:asignease/auth/SignUp.dart';
 import 'package:asignease/auth/Widgets/AuthField.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:walletconnect_dart/walletconnect_dart.dart';
 
 
 String email = 'email';
@@ -163,6 +165,7 @@ class _Signin2State extends State<Signin2> {
                 SizedBox(
                   height: 25,
                 ),
+
                 Center(
                     child: GestureDetector(
                         onTap: () async {
@@ -200,6 +203,21 @@ class _Signin2State extends State<Signin2> {
                             :Blue_button_Loading(
                           width_here: 315,
                         ))),
+                SizedBox(
+                  height: 25,
+                ),
+                Center(
+                  child: GestureDetector(
+                    onTap: (){
+                      connectWallet();
+                    },
+                    child: Blue_button(
+                      isweb3: true,
+                      content: 'Sign in with Metamask',
+                      width_here: 315,
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: 15,
                 ),
@@ -312,7 +330,7 @@ class _Signin2State extends State<Signin2> {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('token', token);
         prefs.setString('email', email);
-        prefs.setString('name', name.toString());
+        prefs.setString('name', responseData['user']['name'].toString());
         prefs.setString('phone', phone.toString());
         prefs.setString('_id', _id.toString());
 
@@ -342,6 +360,125 @@ class _Signin2State extends State<Signin2> {
         checker = false;
       });
       popup1(context, "Something went wrong");
+    }
+  }
+
+
+
+
+
+
+
+
+
+  Future<void> SignInApi_Web3() async {
+    var url = Uri.parse(globals.baseUrl + 'auth/login');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
+
+    var body = jsonEncode({
+      "web3": true,
+      "wallet_address": address,
+
+    });
+
+    try {
+      var response = await http.post(url, headers: headers, body: body);
+
+      if (response.statusCode == 200) {
+        // Request successful, handle the response
+        var responseData = jsonDecode(response.body);
+        var token=responseData['token'];
+
+        // store token using shared preferences
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('token', token);
+        prefs.setString('name', "Anonymous");
+        prefs.setString('address', address);
+
+
+        //push to home screen
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => ScreenDecider()));
+
+        print(responseData);
+        setState(() {
+          checker = false;
+        });
+
+      } else {
+        // Request failed, handle the error
+        print('Request failed with status: ${response.statusCode}.');
+        print(response.body);
+        setState(() {
+          checker = false;
+        });
+        //show snackbar
+        popup1(context, "Something went wrong");
+      }
+    } catch (e) {
+      // Exception occurred during the request
+      print('Error: $e');
+      setState(() {
+        checker = false;
+      });
+      popup1(context, "Something went wrong");
+    }
+  }
+  void connectWallet() async {
+    final connector = WalletConnect(
+      bridge: 'https://bridge.walletconnect.org',
+      clientMeta: PeerMeta(
+        name: 'WalletConnect',
+        description: 'WalletConnect Developer App',
+        url: 'https://walletconnect.org',
+        icons: [
+          'https://gblobscdn.gitbook.com/spaces%2F-LJJeCjcLrr53DcT1Ml7%2Favatar.png?alt=media'
+        ],
+      ),
+    );
+
+    connector.on('connect', (session) {
+      print("one");
+      print(session);
+
+      if (session is SessionStatus && session.accounts.isNotEmpty) {
+        final connectedAccount = session.accounts[0];
+        print("Connected account address: $connectedAccount");
+        SharedPreferences.getInstance().then((prefs) {
+          prefs.setString("connectedAccount", connectedAccount);
+          setState(() {
+            connected = true;
+            address = connectedAccount;
+            SignInApi_Web3();
+          });
+        });
+      }
+    });
+
+    connector.on('session_update', (payload) {
+      print("two");
+      print(payload);
+    });
+
+    connector.on('disconnect', (session) {
+      print("3");
+      print(session);
+    });
+
+    if (!connector.connected) {
+      final session = await connector.createSession(
+        chainId: 4160,
+        onDisplayUri: (uri) async {
+          wcLink = uri;
+          print(uri);
+          await launch(wcLink);
+          print("Launched");
+        },
+      );
     }
   }
 }

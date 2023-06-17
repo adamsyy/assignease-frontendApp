@@ -332,7 +332,7 @@ class _TaskInfoState extends State<TaskInfo> {
                             var body = jsonEncode({
                            "bid_amount":amount_user,
                               "task_id":widget.id,
-
+"bid_message":message_user
                             });
                             var response = await http.post(url, headers: headers, body: body);
                             if(response.statusCode==200){
