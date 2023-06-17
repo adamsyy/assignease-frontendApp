@@ -27,6 +27,27 @@ The Assignment Help App is a user-friendly and innovative platform that connects
 - Python
 - Metamask
 
+# Running the Flutter App
+To run the Assignment Help App, follow these steps:
+
+- Install Flutter on your development machine.
+- Clone the project repository from GitHub.
+- Open the project in your preferred IDE.
+- Install the required dependencies using Flutter's package manager.
+- Ensure you have a connected device or emulator running.
+- Run the app using the flutter run command.
+- The app will launch on your device or emulator, allowing you to explore its features and functionality.
+
+# Contributing to the Project
+If you're interested in contributing to the Assignment Help App project, follow these guidelines:
+
+- Fork the project repository on GitHub.
+- Clone your forked repository to your local machine.
+- Make the necessary code changes or improvements.
+- Test your changes thoroughly to ensure they don't introduce any issues.
+- Commit your changes and push them to your forked repository.
+- Create a pull request on the original project repository to submit your changes for review.
+- Make sure to provide a clear and concise description of your changes in the pull request, along with any relevant documentation or testing instructions.
 
 # Benefits
 - Cost-Effective: The Assignment Help App provides a cost-effective solution for students seeking academic support. By using the auction system, students can find experts offering their services at competitive prices, saving money compared to traditional tutoring services.
