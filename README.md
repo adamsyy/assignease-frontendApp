@@ -18,11 +18,21 @@ The Assignment Help App is a user-friendly and innovative platform that connects
 ![Slide 16_9 - 2](https://github.com/adamsyy/assignease-frontendApp/assets/75473780/844ee3af-f043-40dd-94ab-ff43ab01064f)
 ![Slide 16_9 - 3](https://github.com/adamsyy/assignease-frontendApp/assets/75473780/5e172a57-e5e7-44dc-af03-b518fcb326e2)
 
+# Tech stacks/ Tools
+
+- Flutter
+- Nodejs
+- Express
+- Mongodb
+- Python
+- Metamask
+
+
 # Benefits
--Cost-Effective: The Assignment Help App provides a cost-effective solution for students seeking academic support. By using the auction system, students can find experts offering their services at competitive prices, saving money compared to traditional tutoring services.
+- Cost-Effective: The Assignment Help App provides a cost-effective solution for students seeking academic support. By using the auction system, students can find experts offering their services at competitive prices, saving money compared to traditional tutoring services.
 
--Time-Saving: The app eliminates the need for time-consuming processes involved in traditional tutoring services. Students can quickly post their requirements and receive bids from experts, reducing the time spent searching for assistance.
+- Time-Saving: The app eliminates the need for time-consuming processes involved in traditional tutoring services. Students can quickly post their requirements and receive bids from experts, reducing the time spent searching for assistance.
 
--Personalized Support: The app connects students with subject matter experts, ensuring personalized support tailored to their specific needs. Students can find experts in their desired subjects, guaranteeing high-quality assistance for their assignments and homework.
+- Personalized Support: The app connects students with subject matter experts, ensuring personalized support tailored to their specific needs. Students can find experts in their desired subjects, guaranteeing high-quality assistance for their assignments and homework.
 
--Monetization for Experts: The Assignment Help App provides an opportunity for experts to monetize their skills and expertise. By bidding on assignments, experts can offer their services and earn income while sharing their knowledge with students.
+- Monetization for Experts: The Assignment Help App provides an opportunity for experts to monetize their skills and expertise. By bidding on assignments, experts can offer their services and earn income while sharing their knowledge with students.
