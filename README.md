@@ -28,7 +28,7 @@ The Assignment Help App is a user-friendly and innovative platform that connects
 - Metamask
 
 # Running the Flutter App
-To run the Assignment Help App, follow these steps:
+To run the Assignease App, follow these steps:
 
 - Install Flutter on your development machine.
 - Clone the project repository from GitHub.
@@ -38,8 +38,11 @@ To run the Assignment Help App, follow these steps:
 - Run the app using the flutter run command.
 - The app will launch on your device or emulator, allowing you to explore its features and functionality.
 
+# Backend Repository
+![assignease-backend](https://github.com/jaison080/assignease-backend)
+
 # Contributing to the Project
-If you're interested in contributing to the Assignment Help App project, follow these guidelines:
+If you're interested in contributing to the Assignease App project, follow these guidelines:
 
 - Fork the project repository on GitHub.
 - Clone your forked repository to your local machine.
