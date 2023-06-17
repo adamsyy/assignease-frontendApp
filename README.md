@@ -1,5 +1,5 @@
 # Assignease
-The Assignment Help App is a user-friendly and innovative platform that connects students with subject matter experts for personalized, cost-effective, and high-quality academic support. This app addresses the challenges faced by traditional tutoring and assignment help services, such as high costs, time-consuming processes, and limited expertise options.
+The Assignease App is a user-friendly and innovative platform that connects students with subject matter experts for personalized, cost-effective, and high-quality academic support. This app addresses the challenges faced by traditional tutoring and assignment help services, such as high costs, time-consuming processes, and limited expertise options.
 
 # Features
 - Auction System: The app utilizes an auction system to allocate assignments. Students can post their requirements, and experts can bid on the assignments based on their expertise, task complexity, and completion time. The lowest bid is accepted, ensuring students find the most cost-effective option for their specific needs.
