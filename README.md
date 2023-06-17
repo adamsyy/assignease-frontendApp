@@ -39,7 +39,7 @@ To run the Assignease App, follow these steps:
 - The app will launch on your device or emulator, allowing you to explore its features and functionality.
 
 # Backend Repository
-![assignease-backend](https://github.com/jaison080/assignease-backend)
+[assignease-backend](https://github.com/jaison080/assignease-backend)
 
 # Contributing to the Project
 If you're interested in contributing to the Assignease App project, follow these guidelines:
