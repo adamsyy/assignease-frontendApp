@@ -15,6 +15,8 @@ The Assignment Help App is a user-friendly and innovative platform that connects
 # App screenshots
 
 ![s1](https://github.com/adamsyy/assignease-frontendApp/assets/75473780/5cb4bb9a-8614-4781-b117-42291521e059)
+![Slide 16_9 - 2](https://github.com/adamsyy/assignease-frontendApp/assets/75473780/844ee3af-f043-40dd-94ab-ff43ab01064f)
+![Slide 16_9 - 3](https://github.com/adamsyy/assignease-frontendApp/assets/75473780/5e172a57-e5e7-44dc-af03-b518fcb326e2)
 
 # Benefits
 -Cost-Effective: The Assignment Help App provides a cost-effective solution for students seeking academic support. By using the auction system, students can find experts offering their services at competitive prices, saving money compared to traditional tutoring services.
