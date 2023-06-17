@@ -5,10 +5,10 @@ The Assignment Help App is a user-friendly and innovative platform that connects
 -Auction System: The app utilizes an auction system to allocate assignments. Students can post their requirements, and experts can bid on the assignments based on their expertise, task complexity, and completion time. The lowest bid is accepted, ensuring students find the most cost-effective option for their specific needs.
 
 -Wide Range of Subjects: The app offers a wide range of subjects and topics to cater to diverse academic needs. Students can find experts in various fields, ensuring they receive assistance tailored to their specific subject area.
+-The app uses advanced algorithms, including the Light Gradient Boosting Machine (LightGBM) regression model from Chapter 4, to recommend the best bids for students. This model analyzes various factors, such as expertise, task complexity, and completion time, to provide accurate and optimal bidding recommendations.
 
+-By leveraging this algorithm, the Assignment Help App ensures that students receive the most suitable and cost-effective bids from subject matter experts. This saves time and money for students while maintaining the high quality of academic support.
 -Transparent Pricing: The pricing on the app is transparent, allowing students to compare and choose the most suitable bid for their budget. This transparency ensures students have control over the cost of their academic support.
-
--Expert Ratings: Expert ratings are available on the app, enabling students to make informed decisions about the quality of assistance they can expect. These ratings provide valuable feedback and help students choose the best expert for their assignments and homework.
 
 -User-Friendly Interface: The app is designed with a user-friendly interface, making it easy for students to navigate and find the help they need. The intuitive design ensures a seamless experience for both students and experts.
 
