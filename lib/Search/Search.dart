@@ -84,7 +84,7 @@ class _SearchState extends State<Search> {
               ),
               // Add some spacing between the logo and text
               Text(
-                'Assignease',
+                'EssayChains',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -105,7 +105,7 @@ class _SearchState extends State<Search> {
               padding: const EdgeInsets.only(
                   left: 20, right: 20, top: 10, bottom: 10),
               child: Text(
-                "Popular Profiles in AssignEase",
+                "Popular Profiles in EssayChains",
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'Sora',

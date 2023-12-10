@@ -49,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset("pictures/image14.png"),
-          Text("Assignease", style: TextStyle(
+          Text("EssayChains", style: TextStyle(
             color: Colors.black,
             fontSize: 20,
             fontWeight: FontWeight.bold,

@@ -1,5 +1,5 @@
-# Assignease
-The Assignease App is a user-friendly and innovative platform that connects students with subject matter experts for personalized, cost-effective, and high-quality academic support. This app addresses the challenges faced by traditional tutoring and assignment help services, such as high costs, time-consuming processes, and limited expertise options.
+# EssayChains
+The EssayChains App is a user-friendly and innovative platform that connects students with subject matter experts for personalized, cost-effective, and high-quality academic support. This app addresses the challenges faced by traditional tutoring and assignment help services, such as high costs, time-consuming processes, and limited expertise options.
 
 # Features
 - Auction System: The app utilizes an auction system to allocate assignments. Students can post their requirements, and experts can bid on the assignments based on their expertise, task complexity, and completion time. The lowest bid is accepted, ensuring students find the most cost-effective option for their specific needs.
@@ -12,11 +12,6 @@ The Assignease App is a user-friendly and innovative platform that connects stud
 
 - User-Friendly Interface: The app is designed with a user-friendly interface, making it easy for students to navigate and find the help they need. The intuitive design ensures a seamless experience for both students and experts.
 
-# App screenshots
-
-![s1](https://github.com/adamsyy/assignease-frontendApp/assets/75473780/5cb4bb9a-8614-4781-b117-42291521e059)
-![Slide 16_9 - 2](https://github.com/adamsyy/assignease-frontendApp/assets/75473780/844ee3af-f043-40dd-94ab-ff43ab01064f)
-![Slide 16_9 - 3](https://github.com/adamsyy/assignease-frontendApp/assets/75473780/5e172a57-e5e7-44dc-af03-b518fcb326e2)
 
 # Tech stacks/ Tools
 
@@ -28,7 +23,7 @@ The Assignease App is a user-friendly and innovative platform that connects stud
 - Metamask
 
 # Running the Flutter App
-To run the Assignease App, follow these steps:
+To run the EssayChains App, follow these steps:
 
 - Install Flutter on your development machine.
 - Clone the project repository from GitHub.
@@ -38,11 +33,9 @@ To run the Assignease App, follow these steps:
 - Run the app using the flutter run command.
 - The app will launch on your device or emulator, allowing you to explore its features and functionality.
 
-# Backend Repository
-[assignease-backend](https://github.com/jaison080/assignease-backend)
 
 # Contributing to the Project
-If you're interested in contributing to the Assignease App project, follow these guidelines:
+If you're interested in contributing to the EssayChains App project, follow these guidelines:
 
 - Fork the project repository on GitHub.
 - Clone your forked repository to your local machine.

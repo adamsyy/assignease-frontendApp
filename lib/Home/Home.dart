@@ -74,9 +74,7 @@ class _HomeState extends State<Home> {
               Icons.info_outline_sharp,
               color: Colors.black,
             ),
-            onPressed: () {
-
-            },
+            onPressed: () {},
           ),
           centerTitle: true,
           title: Padding(
@@ -90,7 +88,7 @@ class _HomeState extends State<Home> {
                 ),
                 // Add some spacing between the logo and text
                 Text(
-                  'Assignease',
+                  'EssayChains',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -117,7 +115,7 @@ class _HomeState extends State<Home> {
                           child: TopBanner(
                               task: "Post Tasks",
                               description:
-                                  "With AssignEase you know  where to  something totally possible.",
+                                  "With EssayChains you know  where to  something totally possible.",
                               image:
                                   "https://cdn.pixabay.com/photo/2013/07/12/18/04/open-152933_960_720.png")),
                       SizedBox(
@@ -175,11 +173,10 @@ class _HomeState extends State<Home> {
                 ),
               ),
 
-
               SizedBox(
                 height: 30,
               ),
-            PopularServices(),
+              PopularServices(),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Column(
@@ -190,7 +187,7 @@ class _HomeState extends State<Home> {
                     Row(
                       children: [
                         Text(
-                          "Inspiring works made on Assignease",
+                          "Inspiring works made on EssayChains",
                           style: TextStyle(
                             color: Color.fromRGBO(36, 107, 253, 1),
                             fontFamily: 'Sora',
@@ -207,12 +204,17 @@ class _HomeState extends State<Home> {
                           MaterialPageRoute(
                             builder: (context) => TaskInfo(
                               isPopularTask: true,
-                              title: "I will design top notch social media content",
-                              description: "Welcome to our professional social media content design services! We pride ourselves on creating top-notch, eye-catching, and engaging content tailored to suit your brand's unique personality and target audience. With our expertise in graphic design, marketing strategies, and understanding of social media platforms, we are confident in delivering exceptional content that will captivate your followers and drive increased engagement.",
-                              image: "https://fiverr-res.cloudinary.com/videos/t_main1,q_auto,f_auto/evubbjcf5gidq65ss54x/design-amazing-social-media-content-for-your-business.png", // Replace with the actual image URL
-                              postedBy: "John Doe", // Replace with the actual posted by user
+                              title:
+                                  "I will design top notch social media content",
+                              description:
+                                  "Welcome to our professional social media content design services! We pride ourselves on creating top-notch, eye-catching, and engaging content tailored to suit your brand's unique personality and target audience. With our expertise in graphic design, marketing strategies, and understanding of social media platforms, we are confident in delivering exceptional content that will captivate your followers and drive increased engagement.",
+                              image:
+                                  "https://fiverr-res.cloudinary.com/videos/t_main1,q_auto,f_auto/evubbjcf5gidq65ss54x/design-amazing-social-media-content-for-your-business.png", // Replace with the actual image URL
+                              postedBy:
+                                  "John Doe", // Replace with the actual posted by user
                               budget: 27304, // Replace with the actual budget
-                              numBidders: 5, // Replace with the actual number of bidders
+                              numBidders:
+                                  5, // Replace with the actual number of bidders
                             ),
                           ),
                         );
@@ -308,12 +310,17 @@ class _HomeState extends State<Home> {
                           MaterialPageRoute(
                             builder: (context) => TaskInfo(
                               isPopularTask: true,
-                              title: "A quirky combination of text and illustrationts",
-                              description: "Get ready to stand out from the crowd with our unique and captivating fusion of text and illustrations! We offer a one-of-a-kind social media content design service that combines witty, engaging text with visually striking illustrations, delivering a memorable experience for your audience. Our team of talented wordsmiths and creative illustrators are passionate about crafting content that sparks joy, entertains, and leaves a lasting impression. We understand the power of storytelling and know how to leverage it effectively to engage your target audience.",
-                              image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/151504727/original/95bea31785f840dd57f5ec5d8db59fc478e471cc/create-a-quirky-combination-of-text-and-illustration.png", // Replace with the actual image URL
-                              postedBy: "Mathew Davis", // Replace with the actual posted by user
+                              title:
+                                  "A quirky combination of text and illustrationts",
+                              description:
+                                  "Get ready to stand out from the crowd with our unique and captivating fusion of text and illustrations! We offer a one-of-a-kind social media content design service that combines witty, engaging text with visually striking illustrations, delivering a memorable experience for your audience. Our team of talented wordsmiths and creative illustrators are passionate about crafting content that sparks joy, entertains, and leaves a lasting impression. We understand the power of storytelling and know how to leverage it effectively to engage your target audience.",
+                              image:
+                                  "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/151504727/original/95bea31785f840dd57f5ec5d8db59fc478e471cc/create-a-quirky-combination-of-text-and-illustration.png", // Replace with the actual image URL
+                              postedBy:
+                                  "Mathew Davis", // Replace with the actual posted by user
                               budget: 34671, // Replace with the actual budget
-                              numBidders: 13, // Replace with the actual number of bidders
+                              numBidders:
+                                  13, // Replace with the actual number of bidders
                             ),
                           ),
                         );
@@ -410,11 +417,15 @@ class _HomeState extends State<Home> {
                             builder: (context) => TaskInfo(
                               isPopularTask: true,
                               title: "Amazing product line and packaging",
-                              description: "Welcome to our world of exceptional product line and packaging services, where we turn ordinary products into extraordinary experiences! We specialize in creating amazing product lines and packaging solutions that captivate consumers, reinforce brand identity, and elevate your products to new heights.",
-                              image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/122589667/original/2f6145ffefac45434041b65bb86ccf79baead7c3/design-a-stunning-label-and-packaging.png", // Replace with the actual image URL
-                              postedBy: "Fahad Awad", // Replace with the actual posted by user
+                              description:
+                                  "Welcome to our world of exceptional product line and packaging services, where we turn ordinary products into extraordinary experiences! We specialize in creating amazing product lines and packaging solutions that captivate consumers, reinforce brand identity, and elevate your products to new heights.",
+                              image:
+                                  "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/122589667/original/2f6145ffefac45434041b65bb86ccf79baead7c3/design-a-stunning-label-and-packaging.png", // Replace with the actual image URL
+                              postedBy:
+                                  "Fahad Awad", // Replace with the actual posted by user
                               budget: 77143, // Replace with the actual budget
-                              numBidders: 45, // Replace with the actual number of bidders
+                              numBidders:
+                                  45, // Replace with the actual number of bidders
                             ),
                           ),
                         );

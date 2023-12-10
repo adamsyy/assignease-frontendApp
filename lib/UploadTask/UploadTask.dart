@@ -72,7 +72,7 @@ checker=false;
               ),
               // Add some spacing between the logo and text
               Text(
-                'Assignease',
+                'EssayChains',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,

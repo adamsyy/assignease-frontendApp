@@ -190,7 +190,7 @@ class _IAppliedState extends State<IApplied> {
                 width: 60,
               ),
               Text(
-                'Assignease',
+                'EssayChains',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -381,7 +381,7 @@ class _IAppliedState extends State<IApplied> {
 
 void main() {
   runApp(MaterialApp(
-    title: 'Assignease',
+    title: 'EssayChains',
     theme: ThemeData(
       primarySwatch: Colors.blue,
     ),
